@@ -10,7 +10,12 @@ class Enemy {
         // a helper we've provided to easily load images
         this.sprite = 'images/enemy-bug.png';
         this.x = xAxis;
-        this.y = yAxis; 
+        this.y = yAxis;
+        this.baseSpeed = 80;  // arbitrary base speed to ensure adequate enemy speed
+
+        // randomizes enemy speed by randomly multiplying baseSpeed 
+        // with a number between 1 and 5
+        this.speed = this.baseSpeed * Math.floor(Math.random() * 5 + 1);
     }
 
     // Update the enemy's position, required method for game
@@ -19,6 +24,13 @@ class Enemy {
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
+        this.x += this.speed * dt;
+
+        //ensures that enemy is within the gameboard boundary 
+        if(this.x > 505) {
+            this.x = -101;
+            this.speed = this.baseSpeed * Math.floor(Math.random() * 5 + 1);
+        }
         
     }
     // Draw the enemy on the screen, required method for game
@@ -40,9 +52,11 @@ class Enemy {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-let firstBug = new Enemy(0, 0),
-    // secondBug = new Enemy(0, 80),
-    allEnemies = [firstBug];
+//centering bug: y-offset +-20 (83)
+let firstBug = new Enemy(0, 63),
+    secondBug = new Enemy(0, 146),
+    thirdBug = new Enemy(0, 229)
+    allEnemies = [firstBug, secondBug, thirdBug];
 
 
 // Place the player object in a variable called player
