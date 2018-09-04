@@ -64,22 +64,25 @@ class Player {
     handleInput(direction) {
         switch(direction) {
             case 'left':
-                console.log(direction);
-                this.x -= this.horizontalStep;
+                if(this.x > 0) {
+                    this.x -= this.horizontalStep;
+                }
                 break;
             case 'up':
-                console.log(direction);
-                this.y -= this.verticalStep;
+                if(this.y > 0) {
+                    this.y -= this.verticalStep;
+                }
                 break;
             case 'right':
-                console.log(direction);
-                this.x += this.horizontalStep;
+                if(this.x < 404) {
+                    this.x += this.horizontalStep;
+                }
                 break;
             case 'down':
-                console.log(direction);
-                this.y += this.verticalStep;
+                if(this.y < 332) {
+                    this.y += this.verticalStep;
+                }   
         }
-
 
     }
 }
