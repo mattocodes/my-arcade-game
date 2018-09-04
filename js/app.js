@@ -57,18 +57,27 @@ class Player {
         this.verticalStep = 83;     // amount, player's vertical movement
         
     }
+    reset() {
+        this.x = this.xInitial;
+        this.y = this.yInitial;
+    }
+
     update() {
 
         //checking for collision
         for (let enemy of allEnemies) {
             // inspired by 
             // http://blog.sklambert.com/html5-canvas-game-2d-collision-detection
-            if (enemy.x < this.x + 65 && enemy.x + 65 > this.x &&
+            if(enemy.x < this.x + 65 && enemy.x + 65 > this.x &&
                 enemy.y < this.y + 65 && enemy.y + 65 > this.y ) {
                     // resets x & y back to initial positions
-                    this.x = this.xInitial;
-                    this.y = this.yInitial;
+                    this.reset();
             }
+            if(this.y < 0) {
+                this.x = this.xInitial;
+                this.y = this.yInitial; 
+            }
+            
 
         }
         
@@ -101,6 +110,7 @@ class Player {
         }
 
     }
+
 }
 
 //#endregion
