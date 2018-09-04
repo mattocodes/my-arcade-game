@@ -46,6 +46,23 @@ class Enemy {
 // This class requires an update(), render() and
 // a handleInput() method.
 
+class Player {
+    constructor (xAxis, yAxis) {
+        this.sprite = 'images/char-boy.png';
+        this.x = xAxis;
+        this.y = yAxis;
+    }
+    update(dt) {
+
+    }
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+    handleInput() {
+
+    }
+}
+
 //#endregion
 
 //#region Object Instantiation Section
@@ -60,6 +77,8 @@ let firstBug = new Enemy(0, 63),
 
 
 // Place the player object in a variable called player
+
+let player = new Player(202, 400);
 
 //#endregion
 
