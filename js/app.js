@@ -11,7 +11,7 @@ class Enemy {
         this.sprite = 'images/enemy-bug.png';
         this.x = xAxis;
         this.y = yAxis;
-        this.baseSpeed = 80;  // arbitrary base speed to ensure adequate enemy speed
+        this.baseSpeed = 50;  // arbitrary base speed to ensure adequate enemy speed
 
         // randomizes enemy speed by randomly multiplying baseSpeed 
         // with a number between 1 and 5
@@ -48,14 +48,30 @@ class Enemy {
 
 class Player {
     constructor (xAxis, yAxis) {
-        this.sprite = 'images/char-boy.png';
+        this.sprite = 'images/char-horn-girl.png';
         this.x = xAxis;
         this.y = yAxis;
-        this.horizontalStep = 101; //amount, player's horizontal movement
-        this.verticalStep = 83;   //amount, player's vertical movement
+        this.xInitial = xAxis;      // Initial x-position
+        this.yInitial = yAxis;      // Initial y-position 
+        this.horizontalStep = 101;  // amount, player's horizontal movement
+        this.verticalStep = 83;     // amount, player's vertical movement
         
     }
-    update(dt) {
+    update() {
+
+        //checking for collision
+        for (let enemy of allEnemies) {
+            // inspired by 
+            // http://blog.sklambert.com/html5-canvas-game-2d-collision-detection
+            if (enemy.x < this.x + 65 && enemy.x + 65 > this.x &&
+                enemy.y < this.y + 65 && enemy.y + 65 > this.y ) {
+                    // resets x & y back to initial positions
+                    this.x = this.xInitial;
+                    this.y = this.yInitial;
+            }
+
+        }
+        
 
     }
     render() {
