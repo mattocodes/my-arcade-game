@@ -51,6 +51,9 @@ class Player {
         this.sprite = 'images/char-boy.png';
         this.x = xAxis;
         this.y = yAxis;
+        this.horizontalStep = 101; //amount, player's horizontal movement
+        this.verticalStep = 83;   //amount, player's vertical movement
+        
     }
     update(dt) {
 
@@ -58,7 +61,25 @@ class Player {
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
-    handleInput() {
+    handleInput(direction) {
+        switch(direction) {
+            case 'left':
+                console.log(direction);
+                this.x -= this.horizontalStep;
+                break;
+            case 'up':
+                console.log(direction);
+                this.y -= this.verticalStep;
+                break;
+            case 'right':
+                console.log(direction);
+                this.x += this.horizontalStep;
+                break;
+            case 'down':
+                console.log(direction);
+                this.y += this.verticalStep;
+        }
+
 
     }
 }
@@ -78,7 +99,7 @@ let firstBug = new Enemy(0, 63),
 
 // Place the player object in a variable called player
 
-let player = new Player(202, 400);
+let player = new Player(202, 405);
 
 //#endregion
 
