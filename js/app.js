@@ -74,10 +74,8 @@ class Player {
                     this.reset();
             }
             if(this.y < 0) {
-                this.x = this.xInitial;
-                this.y = this.yInitial; 
-            }
-            
+                this.reset();
+            } 
 
         }
         
